@@ -13,6 +13,7 @@ set(SOURCES
     ../src/cborparser.c
     ../src/cborpretty.c
     ../src/cborparser_dup_string.c
+    ../src/cborvalidation.c
 )
 
 add_library(tinycbor ${SOURCES})
@@ -36,6 +37,8 @@ macro(add_fuzz arg)
 endmacro(add_fuzz)
 
 add_fuzz(fuzz_tinycbor tinycbor main_entry)
+add_fuzz(fuzz_validate tinycbor main_entry)
+target_link_options(fuzz_validate PRIVATE -lm)
 
 
 #add_custom_command(kalle ${PROJECT_NAME} POST_BUILD COMMAND afl-fuzz)

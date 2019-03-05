@@ -319,7 +319,7 @@ do_continue_fuzz_libfuzzer() {
         cp $input_dir/* $output_dir/queue_all/
     fi
 
-    ./$binary_dir/$target $output_dir/queue_all -jobs=$num_cores -dict=fuzz.dict -verbosity=0
+    ./$binary_dir/$target $output_dir/queue_all -jobs=$num_cores -dict=fuzz.dict -verbosity=0 -close_fd_mask=3
 
 }
 
